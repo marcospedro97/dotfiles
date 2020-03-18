@@ -10,7 +10,7 @@ dotfiles for my computer, don't repeat yourself, do it once do it well
   - git
   - zsh
     - zsh-sintax-highliting
- -tmux
+  - tmux
     - all my tmux configurations
   - vi
     - all vi pluggins that I use
