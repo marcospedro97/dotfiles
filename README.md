@@ -19,3 +19,4 @@ dotfiles for my computer, don't repeat yourself, do it once do it well
   - python alias
     - pip
   - silversearch
+  - Go
