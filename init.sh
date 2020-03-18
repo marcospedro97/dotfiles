@@ -50,9 +50,9 @@ cp -r zsh /home/$USER/.zsh
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
-mkdir .zsh-syntax-highlighting
-
 cp -r zsh-syntax-highlighting /home/$USER/.zsh-syntax-highlighting
+
+rm -rf zsh-syntax-highlighting
 
 echo "======================================================"
 echo "Installing TMux"
