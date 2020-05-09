@@ -20,4 +20,4 @@ dotfiles for my computer, don't repeat yourself, do it once do it well
 
 ## TO RUN
 
-sh -c "`curl -fSs  https://raw.githubusercontent.com/marcospedro97/dotfiles/master/init.sh`"
+sh "`curl -fSs  https://raw.githubusercontent.com/marcospedro97/dotfiles/master/init.sh`"
