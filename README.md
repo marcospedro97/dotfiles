@@ -9,10 +9,8 @@ dotfiles for my computer, don't repeat yourself, do it once do it well
   - curl
   - Google Chrome
   - Rambox
-  - Spotify
-  - curl
-  - git
   - zsh
+    - Oh my zsh
   - vi
     - all vi pluggins and alias that I use
   - rvm

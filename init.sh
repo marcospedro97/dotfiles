@@ -17,22 +17,8 @@ echo "Installing Google Chrome."
 echo "======================================================"
 echo
 
-git clone https://aur.archlinux.org/google-chrome.git
-cd google-chrome/
-makepkg -s
-sudo pacman -U --noconfirm google-chrome-70.0.3538.77-1-x86_64.pkg.tar.xz
-cd ..
-
-echo "======================================================"
-echo "Installing Spotify."
-echo "======================================================"
-echo
-
-git clone https://aur.archlinux.org/spotify.git
-cd spotify/
-makepkg -s
-sudo pacman -U --noconfirm spotify-1.0.92.390-1-x86_64.pkg.tar.xz
-cd ..
+sudo pacman -S yay
+yay -S google-chrome
 
 echo "======================================================"
 echo "Installing Rambox"
@@ -46,7 +32,9 @@ echo "Installing ZSH"
 echo "======================================================"
 echo
 
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 curl -fSs https://raw.githubusercontent.com/marcospedro97/dotfiles/master/zshrc > $HOME/.zshrc
+chsh -s $(which zsh)
 
 echo "======================================================"
 echo "Configuring VIM"
