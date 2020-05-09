@@ -46,7 +46,7 @@ echo "Installing ZSH"
 echo "======================================================"
 echo
 
-cp zshrc $HOME/.vimrc
+curl -fSs https://raw.githubusercontent.com/marcospedro97/dotfiles/master/zshrc > $HOME/.zshrc
 
 echo "======================================================"
 echo "Configuring VIM"
@@ -55,7 +55,7 @@ echo
 
 sudo pacman -S vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-cp vimrc $HOME/.vimrc
+curl -fSs https://raw.githubusercontent.com/marcospedro97/dotfiles/master/vimrc > $HOME/.vimrc
 vim +PlugInstall +qall
 
 echo "======================================================"
