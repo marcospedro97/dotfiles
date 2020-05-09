@@ -15,6 +15,7 @@ dotfiles for my computer, don't repeat yourself, do it once do it well
     - all vi pluggins and alias that I use
   - rvm
   - Go
+  - Latte Dock
 
 ## TO RUN
 
