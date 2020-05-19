@@ -18,5 +18,6 @@ dotfiles for my computer, don't repeat yourself, do it once do it well
   - Latte Dock
 
 ## TO RUN
-
-sh "`curl -fSs  https://raw.githubusercontent.com/marcospedro97/dotfiles/master/init.sh`"
+```
+bash <(curl -fSs  https://raw.githubusercontent.com/marcospedro97/dotfiles/master/init.sh)
+```

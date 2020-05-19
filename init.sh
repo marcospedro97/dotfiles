@@ -5,16 +5,16 @@ echo "======================================================"
 echo "Updating System"
 echo "======================================================"
 
-sudo pacman -Syu
+sudo pacman --noconfirm -Syu
 
 echo "======================================================"
 echo "Installing SNAP, CURL and Git."
 echo "======================================================"
 echo
 
-sudo pacman -S git
-sudo pacman -S curl
-sudo pacman -S snapd
+sudo pacman --noconfirm -S git
+sudo pacman --noconfirm -S curl
+sudo pacman --noconfirm -S snapd
 sudo systemctl enable --now snapd.socket
 
 echo "======================================================"
@@ -22,15 +22,19 @@ echo "Installing Google Chrome."
 echo "======================================================"
 echo
 
-sudo pacman -S yay
-yay -S google-chrome
+git https://aur.archlinux.org/google-chrome.git
+cd google-chrome
+makepkg -s
+sudo pacman --noconfirm -U google-chrome*.tar.xz
+cd ..
+rm -rf google-chrome
 
 echo "======================================================"
 echo "Installing Rambox"
 echo "======================================================"
 echo
 
-sudo snap install rambox
+sudo pacman --noconfirm -S rambox
 
 echo "======================================================"
 echo "Installing ZSH"
@@ -46,7 +50,7 @@ echo "Configuring VIM"
 echo "======================================================"
 echo
 
-sudo pacman -S vim
+sudo pacman --noconfirm -S vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 curl -fSs https://raw.githubusercontent.com/marcospedro97/dotfiles/master/vimrc > $HOME/.vimrc
 vim +PlugInstall +qall
@@ -66,7 +70,7 @@ echo "Installing Go"
 echo "======================================================"
 echo
 
-sudo pacman -S go
+sudo pacman --noconfirm -S go
 
 
 echo "======================================================"
@@ -75,3 +79,25 @@ echo "======================================================"
 echo
 
 yaourt latte-dock
+
+echo "======================================================"
+echo "Installing rclone"
+echo "======================================================"
+
+sudo pacman --noconfirm -S rclone
+rclone config
+
+
+echo "======================================================"
+echo "Installing TMUX"
+echo "======================================================"
+
+sudo pacman --noconfirm -S tmux
+curl -fSs https://raw.githubusercontent.com/marcospedro97/dotfiles/master/tmux.conf > $HOME/.tmux.conf
+
+
+echo "======================================================"
+echo "Reboot"
+echo "======================================================"
+
+sudo reboot
