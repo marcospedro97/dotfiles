@@ -16,6 +16,8 @@ dotfiles for my computer, don't repeat yourself, do it once do it well
   - rvm
   - Go
   - Latte Dock
+  - TMUX
+  - rclone
 
 ## TO RUN
 ```
