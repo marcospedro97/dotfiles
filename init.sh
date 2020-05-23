@@ -1,6 +1,4 @@
 #!/bin/sh
-
-
 echo "======================================================"
 echo "Updating System"
 echo "======================================================"
@@ -16,6 +14,8 @@ sudo pacman --noconfirm -S git
 sudo pacman --noconfirm -S curl
 sudo pacman --noconfirm -S snapd
 sudo systemctl enable --now snapd.socket
+sudo snap install spt
+yay -S toilet
 
 echo "======================================================"
 echo "Installing Google Chrome."
@@ -64,14 +64,12 @@ curl -L get.rvm.io > rvm-install
 bash < ./rvm-install
 source ~/.bash_profile
 
-
 echo "======================================================"
 echo "Installing Go"
 echo "======================================================"
 echo
 
 sudo pacman --noconfirm -S go
-
 
 echo "======================================================"
 echo "Installing Latte Dock"
@@ -87,14 +85,12 @@ echo "======================================================"
 sudo pacman --noconfirm -S rclone
 rclone config
 
-
 echo "======================================================"
 echo "Installing TMUX"
 echo "======================================================"
 
 sudo pacman --noconfirm -S tmux
 curl -fSs https://raw.githubusercontent.com/marcospedro97/dotfiles/master/tmux.conf > $HOME/.tmux.conf
-
 
 echo "======================================================"
 echo "Reboot"
