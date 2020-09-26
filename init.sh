@@ -18,32 +18,14 @@ sudo snap install spt
 yay -S toilet
 
 echo "======================================================"
-echo "Installing Google Chrome."
-echo "======================================================"
-echo
-
-git https://aur.archlinux.org/google-chrome.git
-cd google-chrome
-makepkg -s
-sudo pacman --noconfirm -U google-chrome*.tar.xz
-cd ..
-rm -rf google-chrome
-
-echo "======================================================"
-echo "Installing Rambox"
-echo "======================================================"
-echo
-
-sudo pacman --noconfirm -S rambox
-
-echo "======================================================"
 echo "Installing ZSH"
 echo "======================================================"
 echo
 
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 curl -fSs https://raw.githubusercontent.com/marcospedro97/dotfiles/master/zshrc > $HOME/.zshrc
-chsh -s $(which zsh)
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "======================================================"
 echo "Configuring VIM"
@@ -65,6 +47,14 @@ bash < ./rvm-install
 source ~/.bash_profile
 
 echo "======================================================"
+echo "Installing NVM"
+echo "======================================================"
+echo
+
+sudo pacman --noconfirm nvm
+echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.zshrc
+
+echo "======================================================"
 echo "Installing Go"
 echo "======================================================"
 echo
@@ -72,11 +62,11 @@ echo
 sudo pacman --noconfirm -S go
 
 echo "======================================================"
-echo "Installing Latte Dock"
+echo "Installing CODE"
 echo "======================================================"
 echo
 
-yaourt latte-dock
+sudo pacman --noconfirm -S code
 
 echo "======================================================"
 echo "Installing rclone"
@@ -95,5 +85,7 @@ curl -fSs https://raw.githubusercontent.com/marcospedro97/dotfiles/master/tmux.c
 echo "======================================================"
 echo "Reboot"
 echo "======================================================"
+
+chsh -s $(which zsh)
 
 sudo reboot

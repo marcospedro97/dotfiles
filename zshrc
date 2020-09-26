@@ -17,8 +17,6 @@ if [[ -z "$TMUX" ]] ;then
 fi
 
 clear
-#fortune | cowsay -f tux
-toilet -f gothic --filter metal Alph
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
