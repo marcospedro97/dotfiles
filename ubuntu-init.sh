@@ -108,7 +108,7 @@ echo "Copying ZSH Configuration"
 echo "======================================================"
 echo
 
-curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/zshrc -o "$HOME/.zshrc"
+curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/rc_files/zshrc -o "$HOME/.zshrc"
 echo "Downloaded zshrc to $HOME/.zshrc"
 
 echo "======================================================"
@@ -134,7 +134,7 @@ echo "Copying TMUX Configuration"
 echo "======================================================"
 echo
 
-curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/tmux.conf -o "$HOME/.tmux.conf"
+curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/rc_files/tmux.conf -o "$HOME/.tmux.conf"
 echo "Downloaded tmux.conf to $HOME/.tmux.conf"
 
 echo "======================================================"
@@ -266,8 +266,8 @@ mkdir -p "$HOME/.scripts"
 mkdir -p "$HOME/.config/systemd/user"
 
 # Copia os arquivos externos para seus locais
-curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/rclone-backup.sh -o "$HOME/.scripts/watch-rsync.sh"
-curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/rsync-watcher.service -o "$HOME/.config/systemd/user/rsync-watcher.service"
+curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/backup/rclone-backup.sh -o "$HOME/.scripts/watch-rsync.sh"
+curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/backup/rsync-watcher.service -o "$HOME/.config/systemd/user/rsync-watcher.service"
 
 chmod +x "$HOME/.scripts/watch-rsync.sh"
 
