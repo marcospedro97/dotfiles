@@ -27,7 +27,7 @@ echo "Atualizando sistema..."
 sudo apt update && sudo apt upgrade -y
 
 echo "Instalando pacotes base..."
-sudo apt install -y git zsh fuse3 libfuse2 tmux curl wget ca-certificates software-properties-common gnupg lsb-release inotify-tools rsync
+sudo apt install -y git zsh tmux curl wget ca-certificates software-properties-common gnupg lsb-release inotify-tools rsync
 
 # ---------------------------------------
 # Docker
