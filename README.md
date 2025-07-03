@@ -1,25 +1,47 @@
-# dotfiles
-dotfiles for my computer, don't repeat yourself, do it once do it well
+# DOTFILES
+
+Ubuntu development environment — automate your setup, do it once and do it well.
 
 ## WHAT WILL BE INSTALLED
- 
-  - Update System
-  - SNAP
-  - Git
-  - curl
-  - Google Chrome
-  - Rambox
-  - zsh
-    - Oh my zsh
-  - vi
-    - all vi pluggins and alias that I use
-  - rvm
-  - Go
-  - Latte Dock
-  - TMUX
-  - rclone
 
-## TO RUN
+- **System update**
+- **Git**
+- **Docker** (with Docker Compose)
+- **RVM** (Ruby Version Manager)
+- **NVM** (Node Version Manager)
+- **VS Code** (via snap)
+- **ZSH** (with Oh My Zsh, zsh-autosuggestions, zsh-syntax-highlighting)
+- **TMUX**
+- **pyenv** (Python version manager)
+- **pgAdmin4** (Desktop)
+- **Terraform**
+- **redis-commander** (via npm)
+- **CUDA Toolkit** (if NVIDIA GPU is detected)
+- **Go (Golang)** (latest version)
+- **rclone** (with daily backup script for `$HOME/proj` to OneDrive)
+
+## PREREQUISITES
+
+- Ubuntu
+- Internet connection
+- Sudo privileges
+
+## HOW TO USE
+
+Clone the repository and run the script:
+
+```bash
+git clone https://github.com/marcospedro97/dotfiles.git
+cd dotfiles
+chmod +x ubuntu-init.sh
+./ubuntu-init.sh
 ```
-bash <(curl -fSs  https://raw.githubusercontent.com/marcospedro97/dotfiles/master/init.sh)
-```
+
+Or run directly via curl:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/master/ubuntu-init.sh)
+
+## CUSTOMIZATION
+
+You can edit the `.zsh.local` and `.tmux.conf` configuration files directly in your home directory after installation.
