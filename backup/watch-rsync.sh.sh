@@ -1,24 +1,31 @@
-#!/bin/bash
-
 SRC="$HOME/proj/"
 DEST="$HOME/OneDrive/proj-backup/"
 LOGFILE="$HOME/.scripts/rsync-watcher.log"
 
-mkdir -p "$DEST"
+mkdir -p "$SRC" "$DEST"
 mkdir -p "$(dirname "$LOGFILE")"
+touch "$LOGFILE"
+chmod 600 "$LOGFILE"
 
 echo "===== $(date '+%Y-%m-%d %H:%M:%S') - Watcher started =====" >> "$LOGFILE"
 
-inotifywait -mr \
-  -e modify,create,delete,move,attrib,close_write,moved_to,moved_from \
-  "$SRC" | while read -r path event file; do
-  echo "----- $(date '+%Y-%m-%d %H:%M:%S') - Event: $event | File: $file | Path: $path" >> "$LOGFILE"
+# Etapa 1: Restauração inicial
+if [ "$(ls -A "$DEST" 2>/dev/null)" ]; then
+  echo "[INFO] Restoring backup..." >> "$LOGFILE"
+  rsync -a "$DEST" "$SRC" >> "$LOGFILE" 2>&1
+fi
 
-  rsync -av --delete "$SRC" "$DEST" >> "$LOGFILE" 2>&1
+# Etapa 2: Início do watcher
+inotifywait -mr -e modify,create,delete,move,close_write "$SRC" | while read -r path event file; do
+  FILE_COUNT=$(find "$SRC" -type f | wc -l)
 
-  if [ $? -eq 0 ]; then
-    echo "----- $(date '+%Y-%m-%d %H:%M:%S') - rsync completed successfully -----" >> "$LOGFILE"
-  else
-    echo "----- $(date '+%Y-%m-%d %H:%M:%S') - rsync failed -----" >> "$LOGFILE"
+  echo "[EVENT] $event $file" >> "$LOGFILE"
+  if [ "$FILE_COUNT" -lt 10 ]; then
+    echo "[WARN] SRC has too few files ($FILE_COUNT). Skipping sync." >> "$LOGFILE"
+    continue
   fi
+
+  rsync -av "$SRC" "$DEST" >> "$LOGFILE" 2>&1 && \
+    echo "[OK] Sync success at $(date)" >> "$LOGFILE" || \
+    echo "[FAIL] Sync failed at $(date)" >> "$LOGFILE"
 done
