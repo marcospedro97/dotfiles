@@ -52,7 +52,9 @@ set -o nobeep  # no annoying beeps
 source ~/.zsh/themes/peepcode.theme
 
 # Syntax highlighting
-source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Autosuggestions
+source ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export TERM=screen-256color
 

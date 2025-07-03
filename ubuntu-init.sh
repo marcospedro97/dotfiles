@@ -27,7 +27,7 @@ echo "Atualizando sistema..."
 sudo apt update && sudo apt upgrade -y
 
 echo "Instalando pacotes base..."
-sudo apt install -y git zsh fuse libfuse2 tmux curl wget ca-certificates software-properties-common gnupg lsb-release inotify-tools rsync
+sudo apt install -y git zsh fuse3 libfuse2 tmux curl wget ca-certificates software-properties-common gnupg lsb-release inotify-tools rsync
 
 # ---------------------------------------
 # Docker
@@ -192,15 +192,21 @@ curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/m
 
 chmod 600 "$HOME/.scripts/rsync-watcher.log"
 
-systemctl --user daemon-reexec
-systemctl --user daemon-reload
-systemctl --user enable --now onedrive-mount.service
-systemctl --user enable --now rsync-watcher.service
-
 echo "======================================================"
 echo "Alterando shell padrão para ZSH..."
 echo "======================================================"
 chsh -s "$(which zsh)"
+
+echo "======================================================"
+echo "Configurando rclone..."
+echo "======================================================"
+
+rclone config
+
+systemctl --user daemon-reexec
+systemctl --user daemon-reload
+systemctl --user enable --now onedrive-mount.service
+systemctl --user enable --now rsync-watcher.service
 
 echo "======================================================"
 echo "Setup completo!"
@@ -211,6 +217,9 @@ echo "1. Reinicie o terminal ou faça logout/login para aplicar alterações."
 echo "2. Docker e Go exigem reinício do shell para PATH correto."
 echo "3. Para garantir segurança do backup, dados só serão sobrescritos se houver mais de 10 arquivos no SRC."
 
-echo "Fim do script, finalizando processo sudo..."
+sleep 120
 
-kill "$SUDO_PID"
+echo "======================================================"
+echo "Reiniciando o sistema..."
+echo "======================================================"
+sudo reboot -n
