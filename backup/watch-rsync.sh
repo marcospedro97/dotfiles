@@ -4,23 +4,23 @@ SRC="$HOME/proj/"
 DEST="$HOME/OneDrive/proj-backup/"
 LOGFILE="$HOME/.scripts/rsync-watcher.log"
 
-mkdir -p "$SRC" "$DEST"
 mkdir -p "$(dirname "$LOGFILE")"
 touch "$LOGFILE"
 chmod 600 "$LOGFILE"
 
 echo "===== $(date '+%Y-%m-%d %H:%M:%S') - Watcher started =====" >> "$LOGFILE"
+echo "[$(date)] Script iniciado, PID $$" >> "$LOGFILE"
 
 # Aguarda o OneDrive ser montado (timeout de 60s)
 for i in {1..60}; do
-  if mount | grep -q "$HOME/OneDrive"; then
+  if findmnt --target "$HOME/OneDrive" >/dev/null; then
     echo "[INFO] OneDrive montado." >> "$LOGFILE"
     break
   fi
   sleep 1
 done
 
-if ! mount | grep -q "$HOME/OneDrive"; then
+if ! findmnt --target "$HOME/OneDrive" >/dev/null; then
   echo "[ERRO] OneDrive não montado após 60s. Abortando watcher." >> "$LOGFILE"
   exit 1
 fi

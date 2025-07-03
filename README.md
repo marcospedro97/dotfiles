@@ -41,6 +41,7 @@ Or run directly via curl:
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/ubuntu-init.sh)
+```
 
 ## CUSTOMIZATION
 
