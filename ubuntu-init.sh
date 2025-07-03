@@ -27,7 +27,7 @@ echo "Atualizando sistema..."
 sudo apt update && sudo apt upgrade -y
 
 echo "Instalando pacotes base..."
-sudo apt install -y git zsh tmux curl wget ca-certificates software-properties-common gnupg lsb-release inotify-tools rsync
+sudo apt install -y git zsh fuse libfuse2 tmux curl wget ca-certificates software-properties-common gnupg lsb-release inotify-tools rsync
 
 # ---------------------------------------
 # Docker
@@ -181,7 +181,8 @@ echo "======================================================"
 echo "Configurando backup automático..."
 echo "======================================================"
 
-mkdir -p "$HOME/.scripts" "$HOME/.config/systemd/user" "$HOME/OneDrive"
+mkdir -p "$HOME/.scripts" "$HOME/.config/systemd/user" "$HOME/OneDrive" "$HOME/proj"
+touch "$HOME/.scripts/rsync-watcher.log"
 
 curl -fsSL https://raw.githubusercontent.com/marcospedro97/dotfiles/refs/heads/master/backup/watch-rsync.sh -o "$HOME/.scripts/watch-rsync.sh"
 chmod 700 "$HOME/.scripts/watch-rsync.sh"
@@ -195,7 +196,6 @@ systemctl --user daemon-reexec
 systemctl --user daemon-reload
 systemctl --user enable --now onedrive-mount.service
 systemctl --user enable --now rsync-watcher.service
-
 
 echo "======================================================"
 echo "Alterando shell padrão para ZSH..."

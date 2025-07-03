@@ -1,7 +1,7 @@
 [Unit]
 Description=Watch ~/proj and sync to OneDrive
-After=default.target
-Requires=default.target
+After=onedrive-mount.service
+Requires=onedrive-mount.service
 
 [Service]
 ExecStart=%h/.scripts/watch-rsync.sh
