@@ -1,10 +1,10 @@
 [Unit]
-Description=Watch $HOME/proj and sync to OneDrive
+Description=Watch ~/proj and sync to OneDrive
 After=default.target
 Requires=default.target
 
 [Service]
-ExecStart=$HOME/.scripts/watch-rsync.sh
+ExecStart=%h/.scripts/watch-rsync.sh
 Restart=always
 
 [Install]
